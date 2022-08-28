@@ -1,5 +1,10 @@
 <template>
-  <base-container title="Vuex"></base-container>
+  <div>
+    <base-container title="Vuex"></base-container>
+    <!-- Можем обращаться к стейту ( как в роутах ) -->
+    <h3>{{ $store.state.counter }}</h3>
+    <button @click="addOne">Add 1</button>
+  </div>
 </template>
 
 <script>
@@ -9,6 +14,11 @@ export default {
   components: {
     BaseContainer,
   },
+  methods: {
+    addOne() {
+      this.$store.state.counter++;
+    }
+  }
 };
 </script>
 
