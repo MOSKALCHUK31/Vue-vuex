@@ -1,19 +1,22 @@
 <template>
   <div>
     <base-container title="Vuex"></base-container>
-    <!-- Можем обращаться к стейту ( как в роутах ) -->
-    <h3>{{ $store.state.counter }}</h3>
+    <the-counter></the-counter>
+    
     <button @click="addOne">Add 1</button>
     <button @click="addTen">Add 10</button>
   </div>
+  <the-counter></the-counter>
 </template>
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
+import TheCounter from './components/TheCounter.vue';
 
 export default {
   components: {
     BaseContainer,
+    TheCounter
   },
   methods: {
     addOne() {

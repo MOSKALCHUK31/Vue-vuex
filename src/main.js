@@ -13,13 +13,12 @@ const store = createStore({
         increment(state) {
             state.counter = state.counter + 1;
         },
-        // Создаем мутацию increase, принимает 2 параметра
-        // Стейт - текущее состояние, payload - данные, переданные из компонента
-        // payload может быть как и обьектом, там и простой переменной
-
         increase(state, payload) {
             state.counter = state.counter + payload;
         }
+    },
+    getters: {
+        
     }
 });
 
