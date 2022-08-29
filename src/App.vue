@@ -4,6 +4,7 @@
     <!-- Можем обращаться к стейту ( как в роутах ) -->
     <h3>{{ $store.state.counter }}</h3>
     <button @click="addOne">Add 1</button>
+    <button @click="addTen">Add 10</button>
   </div>
 </template>
 
@@ -16,9 +17,10 @@ export default {
   },
   methods: {
     addOne() {
-      // Вызываем метод, который находиться в mutations
-      // Для того чтобы изменить глобальное состояние
       this.$store.commit('increment');
+    },
+    addTen() {
+      this.$store.commit('increase', 10);
     }
   }
 };

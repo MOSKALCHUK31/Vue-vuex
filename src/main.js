@@ -3,19 +3,22 @@ import { createStore } from 'vuex';
 
 import App from './App.vue';
 
-// Создаем хранилище с помощью функции
-// Запись как в роутере
 const store = createStore({
     state() {
         return {
             counter: 0
         }
     },
-    // Методы, которые управляют состояние - мутации
     mutations: {
-        // Метод принимает текущее состояние, поэтому мы можем им манипулировать
         increment(state) {
             state.counter = state.counter + 1;
+        },
+        // Создаем мутацию increase, принимает 2 параметра
+        // Стейт - текущее состояние, payload - данные, переданные из компонента
+        // payload может быть как и обьектом, там и простой переменной
+
+        increase(state, payload) {
+            state.counter = state.counter + payload;
         }
     }
 });
