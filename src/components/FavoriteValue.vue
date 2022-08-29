@@ -1,6 +1,7 @@
 <template>
     <div>
         <h3>{{ counter }}</h3>
+        <p>Do more ...</p>
     </div>
 </template>
 
@@ -8,7 +9,8 @@
 export default {
     computed: {
         counter() {
-            return this.$store.getters.finalCounter;
+            // Вызов функции геттера
+            return this.$store.getters.normalizedCounter;
         }
     }
 }
