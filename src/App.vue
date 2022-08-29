@@ -22,13 +22,16 @@ export default {
   },
   methods: {
     addOne() {
-      this.$store.commit('increment');
+      // Здесь уже идет отличие от commit
+      // Коммит - выполнить сразу
+      // Диспатч - дождаться выполнения
+      // В данном случае мы ссылаемся на increment в actions
+      this.$store.dispatch('increment');
       
     },
+    // Вариант 2
     addTen() {
-      // this.$store.commit('increase', 10);
-      // Другая структура записи
-      this.$store.commit({
+      this.$store.dispatch({
         type: 'increase',
         value: 10
       })

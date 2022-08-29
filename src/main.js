@@ -17,19 +17,10 @@ const store = createStore({
             state.counter = state.counter + payload.value;
         }
     },
-    // Геттеры, это как computed props в локальном компоненте. Только ГЛОБАЛЬНО.
-    // Значение кода, которые повторяються в компоненте 
-    // выносяться глобально - в геттеры
     getters: {
-        // Принимаем стейт (Как и любая функция в Vuex)
         finalCounter(state) {
             return state.counter * 2;
         },
-        // Еще один геттер, который использует предыдущий
-        // Первый параметр - state. Его принимаем как "_", 
-        // что значит, что мы не собираемся его использовать
-        // Вторым параметром передаються геттеры
-        // Мы можем использовать один геттер внутри другого - логика проста
         normalizedCounter(_, getters) {
             const finalCounter = getters.finalCounter;
             if (finalCounter > 100) {
@@ -39,6 +30,23 @@ const store = createStore({
             }
 
             return finalCounter;
+        }
+    },
+    // Actions - методы, которые позволяют выполнить асинхронный код
+    actions: {
+        // Даем название любое (можно как и название метода выше)
+        // Принимаем контекст
+        // Обьяснение контекста будет в следующем скрине
+        increment(context) {
+            setTimeout(function() {
+                // Контекст нам позволяет вызвать метод с помощью commit
+                context.commit('increment');
+            }, 2000);
+        },
+        // Вариант 2
+        // То же самое, только передаем те же параметры (дату)
+        increase(context, payload) {
+            context.commit('increase', payload);
         }
     }
 });
