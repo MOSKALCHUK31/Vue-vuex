@@ -1,5 +1,4 @@
 import { createApp } from 'vue';
-//Импортируем Vuex
 import { createStore } from 'vuex';
 
 import App from './App.vue';
@@ -23,7 +22,6 @@ const store = createStore({
 
 const app = createApp(App);
 
-// Используем в апп (как в роутере)
 app.use(store);
 
 app.mount('#app');

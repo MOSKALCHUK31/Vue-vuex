@@ -16,7 +16,9 @@ export default {
   },
   methods: {
     addOne() {
-      this.$store.state.counter++;
+      // Вызываем метод, который находиться в mutations
+      // Для того чтобы изменить глобальное состояние
+      this.$store.commit('increment');
     }
   }
 };
