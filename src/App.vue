@@ -23,9 +23,15 @@ export default {
   methods: {
     addOne() {
       this.$store.commit('increment');
+      
     },
     addTen() {
-      this.$store.commit('increase', 10);
+      // this.$store.commit('increase', 10);
+      // Другая структура записи
+      this.$store.commit({
+        type: 'increase',
+        value: 10
+      })
     }
   }
 };

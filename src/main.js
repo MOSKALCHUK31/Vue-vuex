@@ -14,7 +14,7 @@ const store = createStore({
             state.counter = state.counter + 1;
         },
         increase(state, payload) {
-            state.counter = state.counter + payload;
+            state.counter = state.counter + payload.value;
         }
     },
     // Геттеры, это как computed props в локальном компоненте. Только ГЛОБАЛЬНО.
@@ -26,11 +26,12 @@ const store = createStore({
             return state.counter * 2;
         },
         // Еще один геттер, который использует предыдущий
-        // Первый параметр - state. Его принимаем как "_", что значит, что мы не собираемся его использовать
+        // Первый параметр - state. Его принимаем как "_", 
+        // что значит, что мы не собираемся его использовать
         // Вторым параметром передаються геттеры
         // Мы можем использовать один геттер внутри другого - логика проста
         normalizedCounter(_, getters) {
-            const finalCounter = getters.finalCounter
+            const finalCounter = getters.finalCounter;
             if (finalCounter > 100) {
                 return 100;
             } else if (finalCounter < 0) {
