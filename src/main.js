@@ -11,6 +11,13 @@ const store = createStore({
         return {
             counter: 0
         }
+    },
+    // Методы, которые управляют состояние - мутации
+    mutations: {
+        // Метод принимает текущее состояние, поэтому мы можем им манипулировать
+        increment(state) {
+            state.counter = state.counter + 1;
+        }
     }
 });
 
