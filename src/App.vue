@@ -1,11 +1,15 @@
 <template>
   <div>
-    <base-container title="Vuex"></base-container>
-    <the-counter></the-counter>
-    <favorite-value></favorite-value>
+    <base-container v-if="isAuth" title="Vuex">
+      <the-counter></the-counter>
+      <favorite-value></favorite-value>
 
-    <button @click="increment">Add 1</button>
-    <button @click="increase({value: 10})">Add 10</button>
+      <button @click="increment">Add 1</button>
+      <button @click="increase({value: 10})">Add 10</button>
+    </base-container>
+    <base-container title="Auth">
+      <user-auth></user-auth>
+    </base-container>
   </div>
 </template>
 
@@ -13,18 +17,20 @@
 import BaseContainer from './components/BaseContainer.vue';
 import TheCounter from './components/TheCounter.vue';
 import FavoriteValue from './components/FavoriteValue.vue';
-import { mapActions } from 'vuex';
+import UserAuth from './components/UserAuth.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
     BaseContainer,
     TheCounter,
-    FavoriteValue
+    FavoriteValue,
+    UserAuth
+  },
+  computed: {
+    ...mapGetters(['isAuth'])
   },
   methods: {
-    // Та же самая история и с mapActions
-    // Мы можем использовать функции из store и передавать туда параметры
-    // В данном случае передает параметры в верстке, а тут лишь определяем и импортируем их
     ...mapActions(['increment', 'increase'])
   }
 };

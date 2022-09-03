@@ -6,7 +6,8 @@ import App from './App.vue';
 const store = createStore({
     state() {
         return {
-            counter: 0
+            counter: 0,
+            isAuth: false
         }
     },
     mutations: {
@@ -15,6 +16,10 @@ const store = createStore({
         },
         increase(state, payload) {
             state.counter = state.counter + payload.value;
+        },
+        // Функция, изменяющяя стйт
+        setAuth(state) {
+            state.isAuth = !state.isAuth;
         }
     },
     getters: {
@@ -30,6 +35,10 @@ const store = createStore({
             }
 
             return finalCounter;
+        },
+        // Геттер, который мы получаем в компоненте
+        isAuth(state) {
+            return state.isAuth;
         }
     },
     actions: {
@@ -41,6 +50,10 @@ const store = createStore({
 
         increase(context, payload) {
             context.commit('increase', payload);
+        },
+        // Функция (в реальности асинхронная) для смены состояние
+        setAuth(context) {
+            context.commit('setAuth')
         }
     }
 });
