@@ -4,8 +4,8 @@
     <the-counter></the-counter>
     <favorite-value></favorite-value>
 
-    <button @click="addOne">Add 1</button>
-    <button @click="addTen">Add 10</button>
+    <button @click="increment">Add 1</button>
+    <button @click="increase({value: 10})">Add 10</button>
   </div>
 </template>
 
@@ -13,6 +13,7 @@
 import BaseContainer from './components/BaseContainer.vue';
 import TheCounter from './components/TheCounter.vue';
 import FavoriteValue from './components/FavoriteValue.vue';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
@@ -21,21 +22,10 @@ export default {
     FavoriteValue
   },
   methods: {
-    addOne() {
-      // Здесь уже идет отличие от commit
-      // Коммит - выполнить сразу
-      // Диспатч - дождаться выполнения
-      // В данном случае мы ссылаемся на increment в actions
-      this.$store.dispatch('increment');
-      
-    },
-    // Вариант 2
-    addTen() {
-      this.$store.dispatch({
-        type: 'increase',
-        value: 10
-      })
-    }
+    // Та же самая история и с mapActions
+    // Мы можем использовать функции из store и передавать туда параметры
+    // В данном случае передает параметры в верстке, а тут лишь определяем и импортируем их
+    ...mapActions(['increment', 'increase'])
   }
 };
 </script>

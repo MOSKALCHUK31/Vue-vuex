@@ -1,17 +1,16 @@
 <template>
     <div>
-        <h3>{{ counter }}</h3>
+        <h3>{{ normalizedCounter }}</h3>
         <p>Do more ...</p>
     </div>
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex';
 export default {
     computed: {
-        counter() {
-            // Вызов функции геттера
-            return this.$store.getters.normalizedCounter;
-        }
+        ...mapGetters(['normalizedCounter'])
     }
 }
 </script>

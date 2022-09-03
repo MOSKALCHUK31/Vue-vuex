@@ -32,19 +32,13 @@ const store = createStore({
             return finalCounter;
         }
     },
-    // Actions - методы, которые позволяют выполнить асинхронный код
     actions: {
-        // Даем название любое (можно как и название метода выше)
-        // Принимаем контекст
-        // Обьяснение контекста будет в следующем скрине
         increment(context) {
             setTimeout(function() {
-                // Контекст нам позволяет вызвать метод с помощью commit
                 context.commit('increment');
             }, 2000);
         },
-        // Вариант 2
-        // То же самое, только передаем те же параметры (дату)
+
         increase(context, payload) {
             context.commit('increase', payload);
         }
