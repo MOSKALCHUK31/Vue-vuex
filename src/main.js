@@ -3,11 +3,11 @@ import { createStore } from 'vuex';
 
 import App from './App.vue';
 
-const store = createStore({
-    state() {
+// Создаем обьект (модуль каунтера)
+const counterModule = {
+    state () {
         return {
-            counter: 0,
-            isAuth: false
+            counter: 0
         }
     },
     mutations: {
@@ -17,10 +17,6 @@ const store = createStore({
         increase(state, payload) {
             state.counter = state.counter + payload.value;
         },
-        // Функция, изменяющяя стйт
-        setAuth(state) {
-            state.isAuth = !state.isAuth;
-        }
     },
     getters: {
         finalCounter(state) {
@@ -36,9 +32,10 @@ const store = createStore({
 
             return finalCounter;
         },
-        // Геттер, который мы получаем в компоненте
-        isAuth(state) {
-            return state.isAuth;
+        getAuth(_, _2, rootState, rootGetters) {
+            console.log('RootState ' + rootState.isAuth);
+
+            return rootGetters.isAuth;
         }
     },
     actions: {
@@ -51,7 +48,30 @@ const store = createStore({
         increase(context, payload) {
             context.commit('increase', payload);
         },
-        // Функция (в реальности асинхронная) для смены состояние
+    }
+};
+
+const store = createStore({
+    // Тут его подключаем
+    modules: {
+        counter: counterModule
+    },
+    state() {
+        return {
+            isAuth: false
+        }
+    },
+    mutations: {
+        setAuth(state) {
+            state.isAuth = !state.isAuth;
+        }
+    },
+    getters: {
+        isAuth(state) {
+            return state.isAuth;
+        }
+    },
+    actions: {
         setAuth(context) {
             context.commit('setAuth')
         }

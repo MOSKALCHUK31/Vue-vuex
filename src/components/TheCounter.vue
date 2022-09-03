@@ -2,6 +2,10 @@
     <div>
         <h3>{{ finalCounter }}</h3>
     </div>
+
+    <div>
+        <p>RootState = {{ getAuth }}</p>
+    </div>
 </template>
 
 <script>
@@ -12,7 +16,8 @@ export default {
     computed: {
         // Другой способ выведение каунтера
         ...mapGetters({
-            finalCounter: 'finalCounter'
+            finalCounter: 'finalCounter',
+            getAuth: 'getAuth'
         })
     }
 }
