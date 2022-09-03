@@ -4,6 +4,7 @@
     </div>
 
     <div>
+        <!-- Выводим getAuth из rootState -->
         <p>RootState = {{ getAuth }}</p>
     </div>
 </template>
@@ -14,8 +15,8 @@ import { mapGetters } from 'vuex'
 export default {
     
     computed: {
-        // Другой способ выведение каунтера
-        ...mapGetters({
+        // Выводим getAuth из rootGetters
+        ...mapGetters('counter', {
             finalCounter: 'finalCounter',
             getAuth: 'getAuth'
         })

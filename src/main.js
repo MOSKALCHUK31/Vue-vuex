@@ -5,6 +5,7 @@ import App from './App.vue';
 
 // Создаем обьект (модуль каунтера)
 const counterModule = {
+    namespaced: true,
     state () {
         return {
             counter: 0
@@ -32,6 +33,7 @@ const counterModule = {
 
             return finalCounter;
         },
+        // Получаем рут геттеры
         getAuth(_, _2, rootState, rootGetters) {
             console.log('RootState ' + rootState.isAuth);
 
