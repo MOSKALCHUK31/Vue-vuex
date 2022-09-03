@@ -10,6 +10,7 @@
 import { mapGetters } from 'vuex';
 export default {
     computed: {
+        // Теперь мы обращаемся к нашему модулю через counter
         ...mapGetters('counter', ['normalizedCounter'])
     }
 }

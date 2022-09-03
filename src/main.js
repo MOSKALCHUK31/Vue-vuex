@@ -3,8 +3,9 @@ import { createStore } from 'vuex';
 
 import App from './App.vue';
 
-// Создаем обьект (модуль каунтера)
 const counterModule = {
+    // Если добавить namespacing, то мы сможем обратиться к этому модулю через 
+    // его название, описаное в rootStore
     namespaced: true,
     state () {
         return {
@@ -33,7 +34,6 @@ const counterModule = {
 
             return finalCounter;
         },
-        // Получаем рут геттеры
         getAuth(_, _2, rootState, rootGetters) {
             console.log('RootState ' + rootState.isAuth);
 
@@ -54,8 +54,8 @@ const counterModule = {
 };
 
 const store = createStore({
-    // Тут его подключаем
     modules: {
+        // Его название - counter
         counter: counterModule
     },
     state() {
